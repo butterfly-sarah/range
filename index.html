@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="range.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(
+        function(){
+        //to change style and others while changing range input.
+        $(document).on('input', 'input[type="range"]', function() {
+        $('span').html( $("input[type='range']").val() );
+        $('span').css({left: ($("input[type='range']").val())/10+"%"} );
+        $("input[type='number']").val($('input[type="range"]').val()) ;
+        $("input[type='number']").css( 'background', 'linear-gradient(to right,gray '+(this.value)/10 +'%, #fff ' + (this.value)/10 + '%, white 100%)' );
+        $(this).css( 'background', 'linear-gradient(to right, red,orange,yellow,green,blue, purple '+(this.value)/10 +'%, #fff ' + (this.value)/10 + '%, white 100%)' );});});
+        //to change style and others while changing number input.
+        $(document).on('input', 'input[type="number"]', function() {
+        $("input[type='range']").val($('input[type="number"]').val()) ;
+        $('span').css({left: ($("input[type='range']").val())/10+"%"} );
+        $('span').html( $('input[type="number"]').val() );
+        $("input[type='range']").css( 'background', 'linear-gradient(to right, red ,orange,yellow,green,blue, purple '+(this.value)/10 +'%, #fff ' + (this.value)/10 + '%, white 100%)' );
+        $(this).css( 'background', 'linear-gradient(to right,gray '+(this.value)/10 +'%, #fff ' + (this.value)/10 + '%, white 100%)' );});
+
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <input type="range" id="range" min="0" max="1000" step="10" value="0" >
+    <span id="span">0</span>
+    <input type="number" style="display: block;" value="0" onkeyup="checkcount(this)">
+    </div>
+    <script src="range.js"></script>
+</body>
+</html>
